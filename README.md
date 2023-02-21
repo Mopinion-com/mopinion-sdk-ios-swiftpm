@@ -19,17 +19,17 @@ Other Mopinion SDK's are also available:
 - [Using callback mode](#callback-mode)
 - [Edit triggers](#edit-triggers)
 
-## Release notes for version 1.0.0
+## Release notes for version 1.0.0-beta-19
 ### Changes in 1.0.0
 - New native implementation that doesn't require react-native.
 - Built with Xcode 14.2, tested on iOS 16.
 - Support for partial height forms.
 - Minimum iOS version raised to 12.
-- Introduced new state `NO_FORM_WILL_OPEN` to callbacks.
+- Introduced new state `NO_FORM_WILL_OPEN` for callbacks.
 
 ### Remarks
-- This readme is also included in the github release, which is repackaged for Swift Package Manager. 
-- TODO: instructions for cocoapods
+- This readme is also included in the GitHub release, which is repackaged for Swift Package Manager. 
+- TODO: update the instructions for swiftpm.
 
 <br>
 
@@ -67,7 +67,7 @@ For Xcode 14, make a `Podfile` in root of your project:
 platform :ios, '12.0'
 use_frameworks!
 target '<YOUR TARGET>' do
-	pod 'MopinionSDKWeb', '>= 1.0.0'
+	pod 'MopinionSDK', '>= 1.0.0'
 end
 ```
 
@@ -320,7 +320,7 @@ Check with `hasData(key)` first, as the `get<>(key)` methods can return `null`. 
 ResponseDataKey|Method to read it|Description
 ---|---|---
 DATA_JSONOBJECT|.getJSONObject()|dictionary of the 'raw' JSONObject with all available data
-FORM_KEY|.getString()|the internal unique identifier for the form
+FORM_KEY|.getString()|an internal unique identifier for the form
 FORM_NAME|.getString()|the name of the form. Distinct from the title of the form.
 
 <br>
@@ -330,6 +330,7 @@ This is the data that can be present for a certain MopinionCallbackEvent:
 
 MopinionCallbackEvent|ResponseDataKeys|Remarks
 ---|---|---
+NO\_FORM\_WILL\_OPEN|-|
 FORM_OPEN|DATA_JSONOBJECT|
 &nbsp;|FORM_KEY|
 &nbsp;|FORM_NAME|
@@ -342,6 +343,10 @@ FORM_CLOSED|DATA_JSONOBJECT|Currently only automatically closed forms provide da
 
 The order in which MopinionCallbackEvents occur is:
 
+	1. NO_FORM_WILL_OPEN
+	
+	- or - 
+	 
 	1. FORM_OPEN
 	2. FORM_SENT (only if the user submits a form)
 	3. FORM_CLOSED
@@ -383,6 +388,8 @@ class YourViewController: UIViewController, MopinionOnEvaluateDelegate {
                     let formKey = response.getString(.FORM_KEY) ?? ""
                     print("The form \(formKey) has beent sent and closed, now you can run some code.")
                 }
+            } else if(mopinionEvent == .NO_FORM_WILL_OPEN) {
+                print("No form will open for this event.")
             }
 
         }, onCallbackEventError: { (mopinionEvent, response) -> (Void) in
