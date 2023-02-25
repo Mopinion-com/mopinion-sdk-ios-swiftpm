@@ -51,6 +51,7 @@ The Swift Package Collections panel appears.
 8. TODO optie: From the drop-down button `Dependency Rule` , choose `Up to Next Minor Version` and in the version field enter `1.0.0-beta-19`.
 9. Click the button `Add Package`. A package product selection panel appears.
 10. Choose `MopinionSDK` and click the button `Add Package`. 
+11. If Xcode 14.2 shows a warning `PackageIndex.findPackages failed: featureDisabled`, then clean your project, close the project and open your project again in Xcode. The warning will have disappeared.
 
 <br>
 
