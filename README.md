@@ -45,9 +45,12 @@ Install the Mopinion Mobile SDK Framework via either the Swift Package Manager o
 3. In Xcode 14, from the menu, select `File -> Add Packages…`.  
 The Swift Package Collections panel appears. 
 4. In the search field of the panel, enter `https://github.com/mopinion-com/mopinion-sdk-ios-swiftpm` and press enter.
-5. TODO: From the drop-down button `Dependency Rule` , choose `Exact Version` and in the version field enter `0.5.2-swiftpm`.
-6. Click the button `Add Package`. A package product selection panel appears.
-7. Choose `MopinionSDK` and click the button `Add Package`. 
+5. TODO optie: From the drop-down button `Dependency Rule` , choose `Branch` and in the version field enter `dev` (default is main).
+6. TODO optie: From the drop-down button `Dependency Rule` , choose `Exact Version` and in the version field enter `1.0.0-beta-19`.
+7. TODO optie: From the drop-down button `Dependency Rule` , choose `Up to Next Major Version` and in the version field enter `1.0.0-beta-19`.
+8. TODO optie: From the drop-down button `Dependency Rule` , choose `Up to Next Minor Version` and in the version field enter `1.0.0-beta-19`.
+9. Click the button `Add Package`. A package product selection panel appears.
+10. Choose `MopinionSDK` and click the button `Add Package`. 
 
 <br>
 
