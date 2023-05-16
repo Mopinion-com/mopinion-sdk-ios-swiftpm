@@ -26,19 +26,18 @@ Other Mopinion SDK's are also available:
 
 ### New in 1.0.0
 - Introduced new state `NO_FORM_WILL_OPEN` for callbacks.
-- Introduces new method `semanticVersionString()`.
-- Resized field to fit standard thank-you header on iPhone SE2.
+- Introduces new method `semanticVersionString()` to get the version of the SDK.
 - Support for partial height forms.
 - Support for automatic page navigation and hiding page navigation buttons.
 - Support for auto-submitting forms and hiding submit button.
 
 ### Changes in 1.0.0
-- New native implementation that doesn't require react-native.
+- New fully native implementation that doesn't require any react-native, hence easier install.
 - Built with Xcode 14.3, tested on iOS 16.
 - Minimum iOS version raised to 12.
 
 ### Remarks
-- This readme is also included in the GitHub release, which contains the same SDK binaries repackaged for Swift Package Manager. 
+- This readme is applicable to both the CocoaPods and Swift Package Manager distribution, as the latter uses the same binaries as the GitHub release for CocoaPods. 
 
 <br>
 
@@ -83,7 +82,7 @@ For Xcode 14, make a `Podfile` in root of your project:
 platform :ios, '12.0'
 use_frameworks!
 target '<YOUR TARGET>' do
-	pod 'MopinionSDK', '>= 1.0.0'
+    pod 'MopinionSDK', '>= 1.0.0'
 end
 ```
 
@@ -122,7 +121,7 @@ where `"_button"` is the default name for a passive form event.
 
 You are free to name events after custom events in your app and define them in the Mopinion deployment interface.  
 
-In the Mopinion system you can enable or disable the feedback form when (a user of) your app submits the event. The SDK will ignore unknown events, so you can implement all events beforehand in your app and freely attach/remove forms after your app has been released.
+In the Mopinion system you can enable or disable the feedback form when (a user of) your app submits the event. The SDK will ignore unknown events, so you can implement all events beforehand in your app and freely assign/remove forms to them after your app has been released.
 
 The event could be a touch of a button, at the end of a transaction, proactive, etc.
 
@@ -247,22 +246,22 @@ class ViewController: UIViewController, MopinionOnEvaluateDelegate {
         // check if a form would open                       
         MopinionSDK.evaluate("_myproactiveevent", onEvaluateDelegate: self)
         // the actual result will be in the mopinionOnEvaluateHandler call
-	}
+    }
 ...
-	// callback handler for protocol MopinionOnEvaluateDelegate
+    // callback handler for protocol MopinionOnEvaluateDelegate
     func mopinionOnEvaluateHandler(hasResult: Bool, event: String, formKey: String?, response: [String : Any]?) {
         if(hasResult) {
             // at least one form was found and all optional parameters are non-null
             // because conditions can change every time, use the form key to open it directly
-          	MopinionSDK.openFormAlways(self, formKey!)
+            MopinionSDK.openFormAlways(self, formKey!)
         }else{
             if let _ = formKey {
-				// Found form wouldn't open for event
-				 // we'll open it anyway using the formKey             
-				MopinionSDK.openFormAlways(self, formKey!)
+                // Found form wouldn't open for event
+                // we'll open it anyway using the formKey             
+                MopinionSDK.openFormAlways(self, formKey!)
             }else{
-				// no form found for event
-				...
+                // no form found for event
+                ...
             }
         }
     }
@@ -419,7 +418,7 @@ class YourViewController: UIViewController, MopinionOnEvaluateDelegate {
             let myError = response.getError();
             print("there was an error during callback: \(String(describing: myError))")
         } )
-	}
+    }
 ...
 }
 ...
