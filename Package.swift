@@ -3,9 +3,9 @@
 
 import PackageDescription
 
-let githubReleaseDir = "1.0.1"
-let sdkVersion = "1.0.1"
-let sdkZipfileChecksum = "2e4b5c102e3e4bb41d2160d0c29e81549942c2e5c6ea6b7425d0c3cb0c1f11ab"
+let githubReleaseDir = "1.0.2"
+let sdkVersion = "1.0.2"
+let sdkZipfileChecksum = "c1ebeafd95776649aa411fd0f2498dc3ec38baab3c285e8f6ea1847c804ffeef"
 
 let package = Package(
     name: "MopinionSDK",
@@ -18,7 +18,7 @@ let package = Package(
     targets: [
        .binaryTarget(
        		name: "MopinionSDK",
-       		url: "https://github.com/mopinion-com/mopinion-sdk-ios/releases/download/\(githubReleaseDir)/MopinionSDK-\(sdkVersion).xcframework.zip",
+       		url: "https://github.com/mopinion-com/mopinion-sdk-ios-swiftpm/releases/download/\(githubReleaseDir)/MopinionSDK-\(sdkVersion).xcframework.zip",
        		checksum: sdkZipfileChecksum )     
     ]
 )
