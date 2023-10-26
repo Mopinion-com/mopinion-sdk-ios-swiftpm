@@ -1,5 +1,17 @@
 # Changelog for MopinionSDK iOS
 
+# 1.0.2
+- Implement screenshot for webforms.
+- Implement disable branding.
+- More compact keyboard for a single line text field in text and multiple choice/radio block.
+- Smaller form header in landscape mode.
+- fix: more space for star rating labels.
+
+# 1.0.1
+- New error states in type `MopinionError`.
+- Returns a `MopinionError.formConfigFormNotFound` error with a `NO_FORM_WILL_SHOW` via the `onCallbackEventError` if a form specified in the deployment no longer exists.
+- Improved form load time-out handling.
+
 # 1.0.0
 - First distribution based on the new fully "full" native implementation of mopinion-sdk-ios 1.0.0, packaged for Swift PM. You are no longer limited to only webview forms.
 - The SwiftPM releases moved to their own GitHub repo mopinion-sdk-ios-swiftpm.
