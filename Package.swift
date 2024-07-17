@@ -3,9 +3,9 @@
 
 import PackageDescription
 
-let githubReleaseDir = "1.1.2"
-let sdkVersion = "1.1.2"
-let sdkZipfileChecksum = "15f013ecd9d3cd02a46abafe6df8749ae79a4f85230525fc36c2948ef270dc46"
+let githubReleaseDir = "1.1.3"
+let sdkVersion = "1.1.3"
+let sdkZipfileChecksum = "52c9b525fc2e81c8cacb1971e3ab20285eb966d9d53f2e6a0a4598b6868c31ee"
 
 let package = Package(
     name: "MopinionSDK",
